@@ -14,16 +14,32 @@
 class MainComponent final : public juce::Component
 {
 public:
-    //==============================================================================
     MainComponent();
-
-    //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
 
+    void openButtonClicked() {
+        DBG("Open Button clicked");
+    };
+    void playButtonClicked() {
+        DBG("Play Button clicked");
+    };
+        void stopButtonClicked() {
+        DBG("Stop Button clicked");
+    };
+
 private:
-    //==============================================================================
-    // Your private member variables go here...
+    enum TransportState
+    {
+        Stopped,
+        Starting,
+        Playing,
+        Stopping
+    };
+    TransportState state;
+    juce::TextButton openButton;
+    juce::TextButton playButton;
+    juce::TextButton stopButton;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

@@ -3,6 +3,12 @@ cmake_minimum_required(VERSION 3.22)
 project(AUDIO_PLAYER VERSION 0.0.1)
 add_subdirectory(JUCE) 
 
+# For development purpose, allows "DBG()"
+set(CMAKE_BUILD_TYPE Debug)
+
+# For production
+# set(CMAKE_BUILD_TYPE Release)
+
 # If your app depends the VST2 SDK, perhaps to host VST2 plugins, CMake needs to be told where
 # to find the SDK on your system. This setup should be done before calling `juce_add_gui_app`.
 
@@ -19,7 +25,7 @@ juce_add_gui_app(AudioPlayerApp
     # ICON_SMALL ...
     # DOCUMENT_EXTENSIONS ...           # Specify file extensions that should be associated with this app
     # COMPANY_NAME ...                  # Specify the name of the app's author
-    PRODUCT_NAME "Audio Player App")     # The name of the final executable, which can differ from the target name
+    PRODUCT_NAME "AudioPlayerApp")     # The name of the final executable, which can differ from the target name
 
 # `juce_generate_juce_header` will create a JuceHeader.h for a given target, which will be generated
 # into your build tree. This should be included with `#include <JuceHeader.h>`. The include path for
