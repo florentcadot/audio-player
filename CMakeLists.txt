@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.22)
-project(AUDIO_PLAYER VERSION 0.0.1)
+project(AudioPlayerApp VERSION 0.0.1)
 add_subdirectory(JUCE) 
 
 # For development purpose, allows "DBG()"
@@ -33,7 +33,7 @@ juce_add_gui_app(AudioPlayerApp
 # include all your JUCE module headers; if you're happy to include module headers directly, you
 # probably don't need to call this.
 
-# juce_generate_juce_header(AudioPlayerApp)
+# juce_generate_juce_header("${PROJECT_NAME}")
 
 # `target_sources` adds source files to a target. We pass the target that needs the sources as the
 # first argument, then a visibility parameter for the sources which should normally be PRIVATE.
@@ -79,6 +79,11 @@ target_link_libraries(AudioPlayerApp
     PRIVATE
         # GuiAppData            # If we'd created a binary data target, we'd link to it here
         juce::juce_gui_extra
+        juce::juce_audio_formats
+        juce::juce_audio_devices
+        juce::juce_audio_utils
+        juce::juce_audio_basics
+
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
